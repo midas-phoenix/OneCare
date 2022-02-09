@@ -1,27 +1,21 @@
 $(document).ready(function () {
-    var tblstaff = $('#tblstaff').DataTable();
+    var tblpatient = $('#tblpatient').DataTable();
 
-    tblstaff.on('click', 'tbody tr td a.editdetails', function () {
-        var myModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('newstaffmodal'));
-        var modalTitle = document.querySelector('#newstaffmodalLabel');
-        modalTitle.textContent = 'Edit staff account';
+    tblpatient.on('click', 'tbody tr td a.editdetails', function () {
+        var myModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('newpatientmodal'));
+        var modalTitle = document.querySelector('#newpatientmodalLabel');
+        modalTitle.textContent = 'Edit patient account';
         $("#actiontype").val("edit");
-        $("#staffno").prop("disabled", true);
-        $("#newstaffmodal button[type=submit]").show();
+        $("#patientno").prop("disabled", true);
+        $("#newpatientmodal button[type=submit]").show();
         myModal.show();
     });
 
-    tblstaff.on('click', 'tbody tr td a.viewdetails', function () {
-        var myModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('newstaffmodal'));
-        var modalTitle = document.querySelector('#newstaffmodalLabel');
-        modalTitle.textContent = 'staff account details';
-
-        $("#newstaffmodal .modal-body :input").prop("disabled", true);
-        $("#newstaffmodal button[type=submit]").hide();
-        myModal.show();
+    tblpatient.on('click', 'tbody tr td a.viewdetails', function () {
+        window.location = "/customer-patientdetails.html?patientno=123456"
     });
 
-    tblstaff.on('click', 'tbody tr td a.suspenduser', function () {
+    tblpatient.on('click', 'tbody tr td a.suspenduser', function () {
         Swal.fire({
             title: 'Suspend User',
             text: "Are you sure?, user will no longer be allowed to login to the system!",
@@ -33,13 +27,13 @@ $(document).ready(function () {
             if (result.isConfirmed) {
                 Swal.fire(
                     'Deleted!',
-                    'Staff account has been suspended.',
+                    'Patient account has been suspended.',
                     'success'
                 )
             }
         });
     });
-    tblstaff.on('click', 'tbody tr td a.deleteuser', function () {
+    tblpatient.on('click', 'tbody tr td a.deleteuser', function () {
         Swal.fire({
             title: 'Delete User',
             text: "Are you sure?, You won't be able to revert this!",
@@ -52,24 +46,24 @@ $(document).ready(function () {
             if (result.isConfirmed) {
                 Swal.fire(
                     'Deleted!',
-                    'Staff account has been deleted.',
+                    'Patient account has been deleted.',
                     'success'
                 )
             }
         });
     });
 
-    $("#btnnewStaff").on('click', function () {
-        var myModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('newstaffmodal'));
-        var modalTitle = document.querySelector('#newstaffmodalLabel');
-        modalTitle.textContent = 'New staff account';
+    $("#btnnewPatient").on('click', function () {
+        var myModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('newpatientmodal'));
+        var modalTitle = document.querySelector('#newpatientmodalLabel');
+        modalTitle.textContent = 'New patient account';
         $("#actiontype").val("new");
-        $("#newstaffmodal .modal-body :input").prop("disabled", false);
-        $("#newstaffmodal button[type=submit]").show();
+        $("#newpatientmodal .modal-body :input").prop("disabled", false);
+        $("#newpatientmodal button[type=submit]").show();
         myModal.show();
     });
 
-    $("#newstaffmodal").on("submit", function () {
+    $("#newpatientmodal").on("submit", function () {
         event.preventDefault();
         Swal.fire({
             title: "Confirm " + $("#actiontype").val() == "new" ? "Creation" : "Modification" + ' of Account',
@@ -83,7 +77,7 @@ $(document).ready(function () {
             if (result.isConfirmed) {
                 Swal.fire(
                     'Successful!',
-                    'Staff account has been ' + $("#actiontype").val() == "new" ? "Created" : "Modified",
+                    'Patient account has been ' + $("#actiontype").val() == "new" ? "Created" : "Modified",
                     'success'
                 ).then(data => location.reload());
             }

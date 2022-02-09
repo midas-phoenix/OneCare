@@ -1,12 +1,11 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} All Staff {% endblock %}
+{% block title %} All Patient {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
 <link type="text/css" href="/static/assets/vendor/DataTables/DataTables-1.11.4/css/dataTables.bootstrap5.min.css"
     rel="stylesheet">
-<link type="text/css" href="/static/assets/css/staffs.css" rel="stylesheet">
 {% endblock stylesheets %}
 
 {% block breadcrumb %}
@@ -23,7 +22,7 @@
             </a>
         </li>
         <li class="breadcrumb-item"><a href="#">OneCare</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Staffs</li>
+        <li class="breadcrumb-item active" aria-current="page">Patients</li>
     </ol>
 </nav>
 {% endblock breadcrumb %}
@@ -32,22 +31,22 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="d-block mb-4 mb-md-0">
 
-        <h2 class="h4">All Staff Management</h2>
+        <h2 class="h4">All Patient Management</h2>
     </div>
     <div class="btn-toolbar mb-2 mb-md-0">
-        <button type="button" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center" id="btnnewStaff">
+        <button type="button" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center" id="btnnewPatient">
             <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
                 </path>
             </svg>
-            New Staff
+            New Patient
         </button>
     </div>
 </div>
 
 <div class="card card-body border-0 shadow table-wrapper table-responsive">
-    <table class="table table-hover" id="tblstaff">
+    <table class="table table-hover" id="tblpatient">
         <thead>
             <tr>
                 <th class="border-gray-200">#</th>
@@ -116,7 +115,7 @@
                                         d="M11 6a3 3 0 11-6 0 3 3 0 016 0zM14 17a6 6 0 00-12 0h12zM13 8a1 1 0 100 2h4a1 1 0 100-2h-4z">
                                     </path>
                                 </svg>
-                                Suspend
+                                Deactivate
                             </a>
                             <a class="dropdown-item d-flex align-items-center deleteuser" href="#">
                                 <svg class="dropdown-icon text-danger me-2" fill="currentColor" viewBox="0 0 20 20"
@@ -186,7 +185,7 @@
                                         d="M11 6a3 3 0 11-6 0 3 3 0 016 0zM14 17a6 6 0 00-12 0h12zM13 8a1 1 0 100 2h4a1 1 0 100-2h-4z">
                                     </path>
                                 </svg>
-                                Suspend
+                                Deactivate
                             </a>
                             <a class="dropdown-item d-flex align-items-center deleteuser" href="#">
                                 <svg class="dropdown-icon text-danger me-2" fill="currentColor" viewBox="0 0 20 20"
@@ -256,7 +255,7 @@
                                         d="M11 6a3 3 0 11-6 0 3 3 0 016 0zM14 17a6 6 0 00-12 0h12zM13 8a1 1 0 100 2h4a1 1 0 100-2h-4z">
                                     </path>
                                 </svg>
-                                Suspend
+                                Deactivate
                             </a>
                             <a class="dropdown-item d-flex align-items-center deleteuser" href="#">
                                 <svg class="dropdown-icon text-danger me-2" fill="currentColor" viewBox="0 0 20 20"
@@ -275,19 +274,19 @@
         </tbody>
     </table>
 </div>
-<form class="modal fade" id="newstaffmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="newstaffmodalLabel" aria-hidden="true">
+<form class="modal fade" id="newpatientmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="newpatientmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="newstaffmodalLabel">Add New Staff</h5>
+                <h5 class="modal-title" id="newpatientmodalLabel">Add New Patient</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="staffno">Staff No.</label>
+                            <label for="patientno">Patient No.</label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1">
                                     <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
@@ -297,27 +296,15 @@
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </span>
-                                <input type="text" class="form-control" id="staffno" placeholder="staff Id number"
-                                    aria-label="staffno">
+                                <input type="text" class="form-control" id="patientno" placeholder="patient Id number"
+                                    aria-label="patientno">
                             </div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="exampleInputIconLeft">Profile Picture</label>
-                            <div class="input-group">
-                                <span class="input-group-text" id="basic-addon1">
-                                    <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path clip-rule="evenodd" fill-rule="evenodd"
-                                            d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />
-                                        <path clip-rule="evenodd" fill-rule="evenodd"
-                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-
-                                    </svg>
-                                </span>
-                                <input class="form-control" type="file" id="formFile">
-                            </div>
+                            <label for="exampleInputIconLeft">Passport</label>
+                            <input class="form-control" type="file" id="formFile">
                         </div>
                     </div>
                     <div class="col-12">
@@ -333,13 +320,13 @@
                                     </svg>
                                 </span>
                                 <input type="text" class="form-control" id="fullname"
-                                    placeholder="Staff's Lastname Firstname Middlename" aria-label="fullname">
+                                    placeholder="Patient's Lastname Firstname Middlename" aria-label="fullname">
                             </div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="staffmail">Email</label>
+                            <label for="patientmail">Email</label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1">
                                     <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
@@ -349,14 +336,14 @@
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </span>
-                                <input type="email" class="form-control" id="staffmail"
-                                    placeholder="staff Email Address" aria-label="staffmail">
+                                <input type="email" class="form-control" id="patientmail"
+                                    placeholder="patient Email Address" aria-label="patientmail">
                             </div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="staffmobile">Mobile</label>
+                            <label for="patientmobile">Mobile</label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1">
                                     <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
@@ -366,28 +353,16 @@
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </span>
-                                <input type="tel" class="form-control" id="staffmobile" placeholder="staff Phone Number"
-                                    aria-label="staffmobile">
+                                <input type="tel" class="form-control" id="patientmobile" placeholder="patient Phone Number"
+                                    aria-label="patientmobile">
                             </div>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="address">Address</label>
-                            <textarea class="form-control" placeholder="Enter staff's address..." id="address"
+                            <textarea class="form-control" placeholder="Enter patient's address..." id="address"
                                 rows="4"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label class="my-1 me-2" for="role">Role</label>
-                            <select class="form-select" id="role" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="Admin">Admin</option>
-                                <option value="Doctor">Doctor</option>
-                                <option value="Nurse">Nurse</option>
-                                <option value="Care Giver">Care Giver</option>
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -405,5 +380,5 @@
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 <script type="text/javascript" src="/static/assets/vendor/DataTables/datatables.min.js"></script>
-<script src="/static/assets/js/staffs.js"></script>
+<script src="/static/assets/js/patients.js"></script>
 {% endblock javascripts %}
